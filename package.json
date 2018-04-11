@@ -1,17 +1,14 @@
 {
   "name": "craft_cms_boilerplate_project",
   "version": "0.0.1",
-  "description": "Boilerplate for Craft CMS 2.x projects, built with NPM build tools",
+  "description": "Boilerplate for Craft CMS 2.x projects, with NPM build tools",
   "main": "",
   "repository": {
     "type": "git",
     "url": ""
   },
-  "keywords": [
-    "craft cms",
-    "npm"
-  ],
-  "author": "",
+  "keywords": ["craft cms", "npm"],
+  "author": "Glynn Smith",
   "license": "MIT",
   "bugs": {
     "url": ""
@@ -54,13 +51,19 @@
     "basefiles:craft": "cp -rf craft_base/craft 02_development/craft",
     "basefiles:public": "cp -rf craft_base/public 02_development/public",
     "build": "mkdir 02_development && run-p basefiles:*",
-    "icons": "imagemin --plugin=svgo 01_src/images/icons/*.svg --out-dir=02_development/public/images/icons",
-    "images:svg": "imagemin --plugin=svgo 01_src/images/*.svg --out-dir=02_development/public/images/",
-    "images:jpg": "imagemin --plugin=mozjpeg 01_src/images/*.jpg --out-dir=02_development/public/images/",
-    "images:png": "imagemin --plugin=pngquant 01_src/images/*.png --out-dir=02_development/public/images/",
-    "images:gif": "imagemin --plugin=gifsicle 01_src/images/*.gif --out-dir=02_development/public/images/",
+    "icons":
+      "imagemin --plugin=svgo 01_src/images/icons/*.svg --out-dir=02_development/public/images/icons",
+    "images:svg":
+      "imagemin --plugin=svgo 01_src/images/*.svg --out-dir=02_development/public/images/",
+    "images:jpg":
+      "imagemin --plugin=mozjpeg 01_src/images/*.jpg --out-dir=02_development/public/images/",
+    "images:png":
+      "imagemin --plugin=pngquant 01_src/images/*.png --out-dir=02_development/public/images/",
+    "images:gif":
+      "imagemin --plugin=gifsicle 01_src/images/*.gif --out-dir=02_development/public/images/",
     "images": "run-p images:*",
-    "sass": "node-sass --source-map=true --output-style='nested' --importer=node_modules/node-sass-glob-importer/dist/cli.js 01_src/scss/screen.scss 02_development/public/css/screen.css && postcss 02_development/public/css/*.css --use autoprefixer -d 02_development/public/css",
+    "sass":
+      "node-sass --source-map=true --output-style='nested' --importer=node_modules/node-sass-glob-importer/dist/cli.js 01_src/scss/screen.scss 02_development/public/css/screen.css && postcss 02_development/public/css/*.css --use autoprefixer -d 02_development/public/css",
     "css": "run-s sass css-clean",
     "js": "",
     "stats:css": "",
