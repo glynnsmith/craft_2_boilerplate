@@ -1,0 +1,48 @@
+// screen.scss
+
+// ------------------
+// 00 - Introduction:
+// ------------------
+
+// All SCSS should be written in the BEM naming convention, popularised by Harry Roberts (https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+
+// The naming convention follows this pattern:
+// 	- .block {}
+// 	- .block__element {}
+// 	- .block--modifier {}
+// 	- .block represents the higher level of an abstraction or component.
+// 	- .block__element represents a descendent of .block that helps form block as a whole.
+// - .block--modifier represents a different state or version of .block.
+
+// ----------------------------
+// 01 - Wiping the slate clean:
+// ----------------------------
+@import 'node_modules/normalize.css/normalize';
+@import 'box-sizing';
+
+// ----------------------------------
+// 02 - Grabbing plugins and mixings:
+// ----------------------------------
+// sass-mq (https://github.com/sass-mq/sass-mq)
+@import 'node_modules/sass-mq/mq';
+@import 'mq_setup';
+
+// susy (http://oddbird.net/susy/)
+@import 'node_modules/susy/sass/susy-prefix';
+
+@import 'node_modules/susy/sass/plugins/svg-grid/prefix';
+@import 'susy_setup';
+
+// Setting things up
+@import '01_src/templates/01_base/colors';
+@import '01_src/templates/01_base/dimensions';
+@import '01_src/templates/01_base/motion';
+@import '01_src/templates/01_base/typography';
+
+// Grabbing everything else, in some kind of order
+@import '01_src/templates/07_wrappers/**/*.scss';
+@import '01_src/templates/06_macros/**/*.scss';
+@import '01_src/templates/05_pages/**/*.scss';
+@import '01_src/templates/04_globals/**/*.scss';
+@import '01_src/templates/03_blocks/**/*.scss';
+@import '01_src/templates/02_elements/**/*.scss';

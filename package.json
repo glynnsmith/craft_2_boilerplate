@@ -1,0 +1,72 @@
+{
+  "name": "craft_cms_boilerplate_project",
+  "version": "0.0.1",
+  "description": "Boilerplate for Craft CMS 2.x projects, built with NPM build tools",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "craft cms",
+    "npm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.11.1",
+    "stylelint": "^9.2.0"
+  },
+  "devDependencies": {
+    "ajv": "^5.5.2",
+    "autoprefixer": "^8.2.0",
+    "basicscroll": "^2.1.1",
+    "browser-sync": "^2.23.6",
+    "concat": "^1.0.3",
+    "cssnano": "^3.10.0",
+    "gsap": "^1.20.4",
+    "imagemin-cli": "^3.0.0",
+    "imagemin-gifsicle": "^5.2.0",
+    "imagemin-mozjpeg": "^7.0.0",
+    "imagemin-pngquant": "^5.1.0",
+    "imagemin-svgo": "^6.0.0",
+    "node-sass": "^4.8.3",
+    "node-sass-glob-importer": "^5.1.1",
+    "normalize.css": "^8.0.0",
+    "npm-run-all": "^4.1.2",
+    "postcss-cli": "^5.0.0",
+    "sass-mq": "^4.0.2",
+    "susy": "^3.0.3",
+    "uglify": "^0.1.5",
+    "watch": "^1.0.2"
+  },
+  "scripts": {
+    "clean": "rm -rf 02_development",
+    "basefiles:craft": "cp -rf craft_base/craft 02_development/craft",
+    "basefiles:public": "cp -rf craft_base/public 02_development/public",
+    "build": "mkdir 02_development && run-p basefiles:*",
+    "icons": "imagemin --plugin=svgo 01_src/images/icons/*.svg --out-dir=02_development/public/images/icons",
+    "images:svg": "imagemin --plugin=svgo 01_src/images/*.svg --out-dir=02_development/public/images/",
+    "images:jpg": "imagemin --plugin=mozjpeg 01_src/images/*.jpg --out-dir=02_development/public/images/",
+    "images:png": "imagemin --plugin=pngquant 01_src/images/*.png --out-dir=02_development/public/images/",
+    "images:gif": "imagemin --plugin=gifsicle 01_src/images/*.gif --out-dir=02_development/public/images/",
+    "images": "run-p images:*",
+    "sass": "node-sass --source-map=true --output-style='nested' --importer=node_modules/node-sass-glob-importer/dist/cli.js 01_src/scss/screen.scss 02_development/public/css/screen.css && postcss 02_development/public/css/*.css --use autoprefixer -d 02_development/public/css",
+    "css": "run-s sass css-clean",
+    "js": "",
+    "stats:css": "",
+    "stats:js": "",
+    "stats:image": "",
+    "serve": "browser-sync start --config 'browsersync-config.js'",
+    "start": ""
+  }
+}

@@ -1,0 +1,10 @@
+/node_modules/
+/01_src/craft_base
+/02_development/
+/03_production/
+.eslintcache
+.DS_Store
+*.map
+.sass-cache/*
+*.sublime-project
+*.sublime-workspace

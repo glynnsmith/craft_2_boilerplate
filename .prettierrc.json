@@ -1,0 +1,10 @@
+{
+	"eslintIntegration": true,
+	"cssEnable": ["scss"],
+	"singleQuote": true,
+	"semi": true,
+	"useTabs": true,
+	"tabWidth": 2,
+	"trailingComma": "none",
+	"bracketSpacing": true
+}
