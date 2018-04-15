@@ -13,18 +13,26 @@
  */
 module.exports = {
 	ui: {
-		port: 3001
+		port: 3001,
 	},
-	files: 'src/**/*.scss',
-	watchEvents: ['change'],
+	files: [
+		"public/assets/css/*.css",
+		"public/assets/js/*.js",
+		"craft/**/*.html",
+		"craft/**/*.twig",
+		"**/*.txt",
+		"**/*.pdf",
+		"!node_modules/**/*.html",
+	],
+	watchEvents: ["change"],
 	watch: true,
 	ignore: [],
 	single: false,
 	watchOptions: {
-		ignoreInitial: true
+		ignoreInitial: true,
 	},
 	server: false,
-	proxy: 'http://craft.test/',
+	proxy: "http://craft.test/",
 	port: 3000,
 	middleware: false,
 	serveStatic: [],
@@ -35,17 +43,17 @@ module.exports = {
 		forms: {
 			submit: true,
 			inputs: true,
-			toggles: true
-		}
+			toggles: true,
+		},
 	},
-	logLevel: 'info',
-	logPrefix: 'Browsersync',
+	logLevel: "info",
+	logPrefix: "Browsersync",
 	logConnections: false,
 	logFileChanges: true,
 	logSnippet: true,
 	rewriteRules: [],
-	open: 'local',
-	browser: 'default',
+	open: "local",
+	browser: "default",
 	cors: false,
 	xip: false,
 	hostnameSuffix: false,
@@ -53,7 +61,7 @@ module.exports = {
 	notify: true,
 	scrollProportionally: true,
 	scrollThrottle: 0,
-	scrollRestoreTechnique: 'window.name',
+	scrollRestoreTechnique: "window.name",
 	scrollElements: [],
 	scrollElementMapping: [],
 	reloadDelay: 0,
@@ -68,37 +76,37 @@ module.exports = {
 	codeSync: true,
 	timestamps: true,
 	clientEvents: [
-		'scroll',
-		'scroll:element',
-		'input:text',
-		'input:toggles',
-		'form:submit',
-		'form:reset',
-		'click'
+		"scroll",
+		"scroll:element",
+		"input:text",
+		"input:toggles",
+		"form:submit",
+		"form:reset",
+		"click",
 	],
 	socket: {
 		socketIoOptions: {
-			log: false
+			log: false,
 		},
 		socketIoClientConfig: {
-			reconnectionAttempts: 50
+			reconnectionAttempts: 50,
 		},
-		path: '/browser-sync/socket.io',
-		clientPath: '/browser-sync',
-		namespace: '/browser-sync',
+		path: "/browser-sync/socket.io",
+		clientPath: "/browser-sync",
+		namespace: "/browser-sync",
 		clients: {
-			heartbeatTimeout: 5000
-		}
+			heartbeatTimeout: 5000,
+		},
 	},
 	tagNames: {
-		less: 'link',
-		scss: 'link',
-		css: 'link',
-		jpg: 'img',
-		jpeg: 'img',
-		png: 'img',
-		svg: 'img',
-		gif: 'img',
-		js: 'script'
-	}
+		less: "link",
+		scss: "link",
+		css: "link",
+		jpg: "img",
+		jpeg: "img",
+		png: "img",
+		svg: "img",
+		gif: "img",
+		js: "script",
+	},
 };

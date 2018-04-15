@@ -8,68 +8,125 @@
     "url": ""
   },
   "keywords": ["craft cms", "npm"],
-  "author": "Glynn Smith",
+  "author": "Glynn Smith <glynn.smith@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": ""
   },
   "homepage": "",
-  "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "prettier": "^1.11.1",
-    "stylelint": "^9.2.0"
-  },
   "devDependencies": {
     "ajv": "^5.5.2",
-    "autoprefixer": "^8.2.0",
+    "autoprefixer": "^6.3.6",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
     "basicscroll": "^2.1.1",
-    "browser-sync": "^2.23.6",
-    "concat": "^1.0.3",
-    "cssnano": "^3.10.0",
+    "browser-sync": "^2.12.8",
+    "copyfiles": "^2.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^5.3.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-promise": "^1.3.0",
+    "eslint-plugin-standard": "^1.3.2",
     "gsap": "^1.20.4",
     "imagemin-cli": "^3.0.0",
     "imagemin-gifsicle": "^5.2.0",
     "imagemin-mozjpeg": "^7.0.0",
     "imagemin-pngquant": "^5.1.0",
     "imagemin-svgo": "^6.0.0",
-    "node-sass": "^4.8.3",
-    "node-sass-glob-importer": "^5.1.1",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^3.7.0",
+    "node-sass-glob-importer": "^5.1.2",
     "normalize.css": "^8.0.0",
-    "npm-run-all": "^4.1.2",
-    "postcss-cli": "^5.0.0",
+    "npm-run-all": "^2.1.1",
+    "onchange": "^2.4.0",
+    "postcss-cli": "^2.5.2",
+    "prettier": "^1.11.1",
+    "rimraf": "^2.5.4",
     "sass-mq": "^4.0.2",
+    "stylelint": "^9.2.0",
     "susy": "^3.0.3",
-    "uglify": "^0.1.5",
-    "watch": "^1.0.2"
+    "svgo": "^0.6.6",
+    "uglify-js": "^2.6.2"
   },
   "scripts": {
-    "clean": "rm -rf 02_development",
-    "basefiles:craft": "cp -rf craft_base/craft 02_development/craft",
-    "basefiles:public": "cp -rf craft_base/public 02_development/public",
-    "build": "mkdir 02_development && run-p basefiles:*",
-    "icons":
-      "imagemin --plugin=svgo 01_src/images/icons/*.svg --out-dir=02_development/public/images/icons",
+    "//_clean": "Cleans destination directories for fresh deployment",
+    "clean": "rimraf craft && rimraf public",
+
+    "//_basefiles": "Copies craft basefiles to directories used for serving",
+    "basefiles:craft": "cp -rf 01_src/craft_base/craft ./",
+    "basefiles:public": "cp -rf 01_src/craft_base/public ./",
+    "basefiles:templates":
+      "mkdir -p craft/templates/01_base && mkdir -p craft/templates/02_elements && mkdir -p craft/templates/03_blocks && mkdir -p craft/templates/04_globals && mkdir -p craft/templates/05_pages && mkdir -p craft/templates/06_macros && mkdir -p craft/templates/07_wrappers",
+    "basefiles": "run-s basefiles:* --silent",
+
+    "//_images": "Image optimisation",
+    "images:icons":
+      "imagemin --plugin=svgo 01_src/images/icons/*.svg --out-dir=public/assets/images/icons",
     "images:svg":
-      "imagemin --plugin=svgo 01_src/images/*.svg --out-dir=02_development/public/images/",
+      "imagemin --plugin=svgo 01_src/images/*.svg --out-dir=public/assets/images/",
     "images:jpg":
-      "imagemin --plugin=mozjpeg 01_src/images/*.jpg --out-dir=02_development/public/images/",
+      "imagemin --plugin=mozjpeg 01_src/images/*.jpg --out-dir=public/assets/images/",
     "images:png":
-      "imagemin --plugin=pngquant 01_src/images/*.png --out-dir=02_development/public/images/",
+      "imagemin --plugin=pngquant 01_src/images/*.png --out-dir=public/assets/images/",
     "images:gif":
-      "imagemin --plugin=gifsicle 01_src/images/*.gif --out-dir=02_development/public/images/",
+      "imagemin --plugin=gifsicle 01_src/images/*.gif --out-dir=public/assets/images/",
     "images": "run-p images:*",
-    "sass":
-      "node-sass --source-map=true --output-style='nested' --importer=node_modules/node-sass-glob-importer/dist/cli.js 01_src/scss/screen.scss 02_development/public/css/screen.css && postcss 02_development/public/css/*.css --use autoprefixer -d 02_development/public/css",
-    "css": "run-s sass css-clean",
-    "js": "",
-    "stats:css": "",
-    "stats:js": "",
-    "stats:image": "",
+
+    "//_serve": "Files served with browser-sync",
     "serve": "browser-sync start --config 'browsersync-config.js'",
-    "start": ""
+
+    "//_scss": "Scss file processing",
+    "autoprefixer": "postcss -q -u autoprefixer -r public/assets/css/*.css",
+    "scss":
+      "node-sass --source-map=true --output-style=expanded --importer=node_modules/node-sass-glob-importer/dist/cli.js -o public/assets/css 01_src/scss",
+    "lint-scss": "stylelint 01_src/scss/*.scss --syntax scss || true",
+
+    "//_js": "Javascript file processing",
+    "lint": "eslint 01_src/js || true",
+    "uglify":
+      "mkdirp public/assets/js -p && uglifyjs 01_src/js/*.js -m -o public/assets/js/app.js && uglifyjs 01_src/js/*.js -m -c -o public/assets/js/app.min.js",
+
+    "//_build": "Building and copying files",
+    "build:basefiles": "run-s basefiles",
+    "build:css": "run-s scss autoprefixer",
+    "build:js": "run-s lint uglify",
+    "build:images:icons": "run-s images:icons",
+    "build:images": "run-s images",
+    "build:images:jpg": "run-s images:jpg",
+    "build:images:png": "run-s images:png",
+    "build:images:gif": "run-s images:gif",
+    "build:twig:01_base":
+      "copyfiles -f 01_src/templates/01_base/**/**/*.twig craft/templates/01_base",
+    "build:twig:02_elements":
+      "copyfiles -f 01_src/templates/02_elements/**/**/*.twig craft/templates/02_elements",
+    "build:twig:03_blocks":
+      "copyfiles -f 01_src/templates/03_blocks/**/**/*.twig craft/templates/03_blocks",
+    "build:twig:04_globals":
+      "copyfiles -f 01_src/templates/04_globals/**/**/*.twig craft/templates/04_globals",
+    "build:twig:05_pages":
+      "copyfiles -f 01_src/templates/05_pages/**/**/*.twig craft/templates/05_pages",
+    "build:twig:06_macros":
+      "copyfiles -f 01_src/templates/06_macros/**/**/*.twig craft/templates/06_macros",
+    "build:twig:07_wrappers":
+      "copyfiles -f 01_src/templates/07_wrappers/**/**/*.twig craft/templates/07_wrappers",
+    "build": "run-s clean build:* build:*:*",
+
+    "//_watch": "Watching for changes",
+    "watch:css": "onchange \"01_src/scss\" -- run-s build:css",
+    "watch:js": "onchange \"01_src/js\" -- run-s build:js",
+    "watch:images:icons":
+      "onchange \"01_src/images/icons\" -- run-s build:images:icons",
+    "watch:images:svg":
+      "onchange \"01_src/images/*.svg, !01_src/images/icons/*.svg\" -- run-s build:images:svg",
+    "watch:images:jpg":
+      "onchange \"01_src/images/*.jpg\" -- run-s build:images:jpg",
+    "watch:images:png":
+      "onchange \"01_src/images/*.png\" -- run-s build:images:png",
+    "watch:images:gif":
+      "onchange \"01_src/images/*.gif\" -- run-s build:images:gif",
+    "watch:twig":
+      "onchange \"01_src/templates/**/*.{twig, html}\" -- runs-s build:twig",
+    "watch": "run-p -s serve watch:*"
   }
 }

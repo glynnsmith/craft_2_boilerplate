@@ -31,7 +31,7 @@
     "eqeqeq": ["warn", "allow-null"],
     "indent": ["warn", "tab"],
     "linebreak-style": ["warn", "unix"],
-    "quotes": ["error", "single"],
+    "quotes": ["error", "double"],
     "semi": ["error", "always"],
     "no-unused-vars": ["warn"],
     "no-var": "error",
