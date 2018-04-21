@@ -26,7 +26,6 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^5.3.1",
     "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-promise": "^1.3.0",
     "eslint-plugin-standard": "^1.3.2",
     "gsap": "^1.20.4",
     "imagemin-cli": "^3.0.0",
@@ -34,7 +33,6 @@
     "imagemin-mozjpeg": "^7.0.0",
     "imagemin-pngquant": "^5.1.0",
     "imagemin-svgo": "^6.0.0",
-    "mkdirp": "^0.5.1",
     "node-sass": "^3.7.0",
     "node-sass-glob-importer": "^5.1.2",
     "normalize.css": "^8.0.0",
@@ -51,14 +49,14 @@
   },
   "scripts": {
     "//_clean": "Cleans destination directories for fresh deployment",
-    "clean": "rimraf craft && rimraf public",
+    "clean":
+      "echo \"\nCleaning build directories \n\" && rimraf craft && rimraf public",
 
     "//_basefiles": "Copies craft basefiles to directories used for serving",
     "basefiles:craft": "cp -rf 01_src/craft_base/craft ./",
     "basefiles:public": "cp -rf 01_src/craft_base/public ./",
     "basefiles:templates":
-      "mkdir -p craft/templates/01_base && mkdir -p craft/templates/02_elements && mkdir -p craft/templates/03_blocks && mkdir -p craft/templates/04_globals && mkdir -p craft/templates/05_pages && mkdir -p craft/templates/06_macros && mkdir -p craft/templates/07_wrappers",
-    "basefiles": "run-s basefiles:* --silent",
+      "mkdir -p craft/templates/01_base craft/templates/02_elements craft/templates/03_blocks craft/templates/04_globals craft/templates/05_pages craft/templates/06_macros craft/templates/07_wrappers",
 
     "//_images": "Image optimisation",
     "images:icons":
@@ -71,7 +69,6 @@
       "imagemin --plugin=pngquant 01_src/images/*.png --out-dir=public/assets/images/",
     "images:gif":
       "imagemin --plugin=gifsicle 01_src/images/*.gif --out-dir=public/assets/images/",
-    "images": "run-p images:*",
 
     "//_serve": "Files served with browser-sync",
     "serve": "browser-sync start --config 'browsersync-config.js'",
@@ -83,50 +80,74 @@
     "lint-scss": "stylelint 01_src/scss/*.scss --syntax scss || true",
 
     "//_js": "Javascript file processing",
-    "lint": "eslint 01_src/js || true",
+    "lint-js": "eslint 01_src/js || true",
     "uglify":
-      "mkdirp public/assets/js -p && uglifyjs 01_src/js/*.js -m -o public/assets/js/app.js && uglifyjs 01_src/js/*.js -m -c -o public/assets/js/app.min.js",
+      "mkdir -p public/assets/js && uglifyjs 01_src/js/*.js -m -o public/assets/js/app.js && uglifyjs 01_src/js/*.js -m -c -o public/assets/js/app.min.js",
 
     "//_build": "Building and copying files",
-    "build:basefiles": "run-s basefiles",
+    "build:basefiles": "run-p basefiles:*",
     "build:css": "run-s scss autoprefixer",
-    "build:js": "run-s lint uglify",
-    "build:images:icons": "run-s images:icons",
-    "build:images": "run-s images",
-    "build:images:jpg": "run-s images:jpg",
-    "build:images:png": "run-s images:png",
-    "build:images:gif": "run-s images:gif",
-    "build:twig:01_base":
-      "copyfiles -f 01_src/templates/01_base/**/**/*.twig craft/templates/01_base",
-    "build:twig:02_elements":
-      "copyfiles -f 01_src/templates/02_elements/**/**/*.twig craft/templates/02_elements",
-    "build:twig:03_blocks":
-      "copyfiles -f 01_src/templates/03_blocks/**/**/*.twig craft/templates/03_blocks",
-    "build:twig:04_globals":
-      "copyfiles -f 01_src/templates/04_globals/**/**/*.twig craft/templates/04_globals",
-    "build:twig:05_pages":
-      "copyfiles -f 01_src/templates/05_pages/**/**/*.twig craft/templates/05_pages",
-    "build:twig:06_macros":
-      "copyfiles -f 01_src/templates/06_macros/**/**/*.twig craft/templates/06_macros",
-    "build:twig:07_wrappers":
-      "copyfiles -f 01_src/templates/07_wrappers/**/**/*.twig craft/templates/07_wrappers",
-    "build": "run-s clean build:* build:*:*",
+    "build:js": "run-s lint-js uglify",
+    "build:images": "run-p images:*",
 
-    "//_watch": "Watching for changes",
-    "watch:css": "onchange \"01_src/scss\" -- run-s build:css",
+    "build:twig_base":
+      "copyfiles -f 01_src/templates/01_base/**/**/*.{twig,html} craft/templates/01_base",
+    "build:twig_elements":
+      "copyfiles -f 01_src/templates/02_elements/**/**/*.{twig,html} craft/templates/02_elements",
+    "build:twig_blocks":
+      "copyfiles -f 01_src/templates/03_blocks/**/**/*.{twig,html} craft/templates/03_blocks",
+    "build:twig_globals":
+      "copyfiles -f 01_src/templates/04_globals/**/**/*.{twig,html} craft/templates/04_globals",
+    "build:twig_pages":
+      "copyfiles -f 01_src/templates/05_pages/**/**/*.{twig,html} craft/templates/05_pages",
+    "build:twig_macros":
+      "copyfiles -f 01_src/templates/06_macros/**/**/*.{twig,html} craft/templates/06_macros",
+    "build:twig_wrappers":
+      "copyfiles -f 01_src/templates/07_wrappers/**/**/*.{twig,html} craft/templates/07_wrappers",
+
+    "build":
+      "echo \"\nCreating build directories, then processing/copying files \n\" && run-s build:*",
+
+    "//_watch": "Watching for file changes",
+    "watch:css":
+      "onchange \"01_src/scss\" \"01_src/templates/01_base/**/**/*.scss\" \"01_src/templates/02_elements/**/**/*.scss\" \"01_src/templates/03_blocks/**/**/*.scss\" \"01_src/templates/04_globals/**/**/*.scss\" \"01_src/templates/05_pages/**/**/*.scss\" \"01_src/templates/06_macros/**/**/*.scss\" \"01_src/templates/07_wrappers/**/**/*.scss\" -- run-s build:css",
+
     "watch:js": "onchange \"01_src/js\" -- run-s build:js",
-    "watch:images:icons":
-      "onchange \"01_src/images/icons\" -- run-s build:images:icons",
-    "watch:images:svg":
-      "onchange \"01_src/images/*.svg, !01_src/images/icons/*.svg\" -- run-s build:images:svg",
-    "watch:images:jpg":
-      "onchange \"01_src/images/*.jpg\" -- run-s build:images:jpg",
-    "watch:images:png":
-      "onchange \"01_src/images/*.png\" -- run-s build:images:png",
-    "watch:images:gif":
-      "onchange \"01_src/images/*.gif\" -- run-s build:images:gif",
-    "watch:twig":
-      "onchange \"01_src/templates/**/*.{twig, html}\" -- runs-s build:twig",
-    "watch": "run-p -s serve watch:*"
+
+    "watch:images_icons":
+      "onchange \"01_src/images/icons\" -- run-s images:icons",
+    "watch:images_svg":
+      "onchange \"01_src/images/*.svg, !01_src/images/icons/*.svg\" -- run-s images:svg",
+    "watch:images_jpg": "onchange \"01_src/images/*.jpg\" -- run-s images:jpg",
+    "watch:images_png": "onchange \"01_src/images/*.png\" -- run-s images:png",
+    "watch:images_gif": "onchange \"01_src/images/*.gif\" -- run-s images:gif",
+
+    "watch:basefiles_craft":
+      "onchange \"01_src/craft_base/craft/*\" -- run-s basefiles:craft",
+    "watch:basefiles_public":
+      "onchange \"01_src/craft_base/public/*\" -- run-s basefiles:public",
+
+    "watch:twig_base":
+      "onchange \"01_src/templates/01_base/**/**/*.{twig,html}\" -- run-s build:twig_base",
+    "watch:twig_elements":
+      "onchange \"01_src/templates/02_elements/**/**/*.{twig,html}\" -- run-s build:twig_elements",
+    "watch:twig_blocks":
+      "onchange \"01_src/templates/03_blocks/**/**/*.{twig,html}\" -- run-s build:twig_blocks",
+    "watch:twig_globals":
+      "onchange \"01_src/templates/04_globals/**/**/*.{twig,html}\" -- run-s build:twig_globals",
+    "watch:twig_pages":
+      "onchange \"01_src/templates/05_pages/**/**/*.{twig,html}\" -- run-s build:twig_pages",
+    "watch:twig_macros":
+      "onchange \"01_src/templates/06_macros/**/**/*.{twig,html}\" -- run-s build:twig_macros",
+    "watch:twig_wrappers":
+      "onchange \"01_src/templates/07_wrappers/**/**/*.{twig,html}\" -- run-s build:twig_wrappers",
+    "watch": "echo \"\nWatching files...\n\" && run-p -s serve watch:*",
+
+    "//_start": "Cleans builds and watches ",
+    "start":
+      "echo \"\nGreetings human...Beginning tasks...\n\" && run-s --silent clean build watch",
+
+    "//_postinstall": "Auto-removes duplicate dependencies after npm install",
+    "postinstall": "npm dedupe"
   }
 }

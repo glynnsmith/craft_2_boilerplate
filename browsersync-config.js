@@ -32,7 +32,7 @@ module.exports = {
 		ignoreInitial: true,
 	},
 	server: false,
-	proxy: "http://craft.test/",
+	proxy: "craft.test",
 	port: 3000,
 	middleware: false,
 	serveStatic: [],

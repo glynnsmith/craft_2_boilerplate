@@ -1,7 +1,7 @@
 // colors.scss
 
-// $color__primary: hsl(0, 80%, 50%);
-$color__primary: blue;
+$color__primary: hsl(0, 80%, 50%);
+// $color__primary: blue;
 $color__primary--light: lighten($color__primary, 16%);
 $color__primary--dark: darken($color__primary, 32%);
 

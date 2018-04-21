@@ -47,11 +47,10 @@ h3 {
 }
 
 h1 {
-} // Reserved for .logo__text (in header)
+}
 h2 {
-} // Reserved for page/page-section headers
+}
 h3 {
-	// Reserved for weblog post title headers
 	font-size: $fontsize__med;
 	margin-top: $baseline - 2;
 	margin-bottom: $baseline / 1.5 + 4;
@@ -66,13 +65,13 @@ a:visited {
 	text-decoration: none;
 	color: $grey__dark;
 	transition: color $time__slow $ease__linear 0s,
-		fill $time__slow $ease__linear 0s;
+		fill $time__slow $ease--linear 0s;
 }
 
 a:hover {
 	color: $color__primary;
 	transition: color $time__slow $ease__linear 0s,
-		fill $time__slow $ease__linear 0s;
+		fill $time__slow $ease--linear 0s;
 }
 
 a:active {
@@ -170,7 +169,7 @@ cite {
 	font-style: normal;
 
 	&::before {
-		content: '- ';
+		content: "- ";
 	}
 }
 
