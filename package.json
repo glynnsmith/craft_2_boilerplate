@@ -145,7 +145,7 @@
 
     "//_start": "Cleans builds and watches ",
     "start":
-      "echo \"\nGreetings human...Beginning tasks...\n\" && run-s --silent clean build watch",
+      "echo \"\nHello. Beginning tasks...\n\" && run-s --silent clean build watch",
 
     "//_postinstall": "Auto-removes duplicate dependencies after npm install",
     "postinstall": "npm dedupe"
