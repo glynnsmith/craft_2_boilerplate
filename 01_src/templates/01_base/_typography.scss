@@ -93,38 +93,6 @@ p + p {
 	margin-top: $baseline;
 }
 
-p,
-span,
-li,
-blockquote,
-cite {
-	a,
-	.section__header__link,
-	.widget__link {
-		&:link,
-		&:visited {
-			color: $color__primary;
-			text-decoration: none;
-			font-weight: 400;
-			transition: color $time__slow $ease__in-out,
-				box-shadow $time__slow $ease__in-out;
-		}
-
-		&:hover {
-			color: $color__primary;
-			box-shadow: inset 0 -5px $color__primary;
-			transition: color $time__slow $ease__in-out,
-				box-shadow $time__slow $ease__in-out;
-		}
-
-		&:active {
-			color: $color__primary--light;
-			box-shadow: inset 0 -5px $color__primary--light;
-			transition: none;
-		}
-	}
-}
-
 .section__content {
 	h2 {
 		// Top level header used within section__content
