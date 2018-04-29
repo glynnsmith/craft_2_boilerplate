@@ -398,81 +398,6 @@ p + p {
   margin-top: 36px;
 }
 
-p a:link, p a:visited,
-p .section__header__link:link,
-p .section__header__link:visited,
-p .widget__link:link,
-p .widget__link:visited,
-span a:link,
-span a:visited,
-span .section__header__link:link,
-span .section__header__link:visited,
-span .widget__link:link,
-span .widget__link:visited,
-li a:link,
-li a:visited,
-li .section__header__link:link,
-li .section__header__link:visited,
-li .widget__link:link,
-li .widget__link:visited,
-blockquote a:link,
-blockquote a:visited,
-blockquote .section__header__link:link,
-blockquote .section__header__link:visited,
-blockquote .widget__link:link,
-blockquote .widget__link:visited,
-cite a:link,
-cite a:visited,
-cite .section__header__link:link,
-cite .section__header__link:visited,
-cite .widget__link:link,
-cite .widget__link:visited {
-  color: #e61a1a;
-  text-decoration: none;
-  font-weight: 400;
-  transition: color 450ms ease-in-out, box-shadow 450ms ease-in-out;
-}
-
-p a:hover,
-p .section__header__link:hover,
-p .widget__link:hover,
-span a:hover,
-span .section__header__link:hover,
-span .widget__link:hover,
-li a:hover,
-li .section__header__link:hover,
-li .widget__link:hover,
-blockquote a:hover,
-blockquote .section__header__link:hover,
-blockquote .widget__link:hover,
-cite a:hover,
-cite .section__header__link:hover,
-cite .widget__link:hover {
-  color: #e61a1a;
-  box-shadow: inset 0 -5px #e61a1a;
-  transition: color 450ms ease-in-out, box-shadow 450ms ease-in-out;
-}
-
-p a:active,
-p .section__header__link:active,
-p .widget__link:active,
-span a:active,
-span .section__header__link:active,
-span .widget__link:active,
-li a:active,
-li .section__header__link:active,
-li .widget__link:active,
-blockquote a:active,
-blockquote .section__header__link:active,
-blockquote .widget__link:active,
-cite a:active,
-cite .section__header__link:active,
-cite .widget__link:active {
-  color: #ee6363;
-  box-shadow: inset 0 -5px #ee6363;
-  transition: none;
-}
-
 .section__content h2 {
   font-size: 1.75rem;
   font-weight: 600;
@@ -498,7 +423,7 @@ blockquote {
   display: block;
   border-left: 6px solid #2f455b;
   margin: 0;
-  padding-left: 24px;
+  padding-left: 30px;
   line-height: 36px;
   font-style: italic;
   font-weight: 600;
@@ -532,9 +457,32 @@ hr {
   height: 1px;
 }
 
+.masthead {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.navigation__items {
+  padding-left: 0;
+}
+
+.navigation__item {
+  list-style-type: none;
+}
+
 .b-pagination {
   color: #e61a1a;
-  margin: 24px;
+  margin: 30px;
 }
 
 .button {

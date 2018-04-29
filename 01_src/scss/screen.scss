@@ -4,15 +4,15 @@
 // 00 - Introduction:
 // ------------------
 
+// This file should *ONLY* be used for the importing of SCSS files
+
 // All SCSS should be written in the BEM naming convention, popularised by Harry Roberts (https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
 
 // The naming convention follows this pattern:
 // 	- .block {}
 // 	- .block__element {}
 // 	- .block--modifier {}
-// 	- .block represents the higher level of an abstraction or component.
-// 	- .block__element represents a descendent of .block that helps form block as a whole.
-// - .block--modifier represents a different state or version of .block.
+// 	- .block__element--modifier {}
 
 // ----------------------------
 // 01 - Wiping the slate clean:
