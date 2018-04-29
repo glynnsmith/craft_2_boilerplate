@@ -2,18 +2,19 @@
   "name": "craft_cms_boilerplate_project",
   "version": "0.0.1",
   "description": "Boilerplate for Craft CMS 2.x projects, with NPM build tools",
-  "main": "",
+  "main": "https://github.com/glynnsmith/craft_2_boilerplate",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/glynnsmith/craft_2_boilerplate"
   },
-  "keywords": ["craft cms", "npm"],
+  "keywords": ["craft cms", "npm", "boilerplate"],
   "author": "Glynn Smith <glynn.smith@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/glynnsmith/craft_2_boilerplate/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/glynnsmith/craft_2_boilerplate",
+  "babel": {"presets": ["es2015"]},
   "devDependencies": {
     "ajv": "^5.5.2",
     "autoprefixer": "^6.3.6",

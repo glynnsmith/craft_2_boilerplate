@@ -37,6 +37,9 @@
     "no-var": "error",
     "no-undef": "warn",
     "no-useless-escape": "off",
+    "no-trailing-spaces": "error",
+    "no-template-curly-in-string": "error",
+    "no-whitespace-before-property": "error",
     "no-console": [
       "warn",
       {
@@ -45,7 +48,8 @@
     ]
   },
   "globals": {
-    "require": false
+    "require": false,
+    "module": false,
   },
   "env": {
     "browser": true,
