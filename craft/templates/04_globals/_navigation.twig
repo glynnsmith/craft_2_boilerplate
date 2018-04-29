@@ -1,0 +1,7 @@
+<nav class="nagivation">
+	<ul class="navigation__items">
+		<li class="navigation__item">
+			<a href="{{ url('news') }}" {% if craft.request.firstSegment=='news' %}class="active" {% endif %}>News</a>
+		</li>
+	</ul>
+</nav>
