@@ -5,8 +5,8 @@ entry. # # It's worth noting that even if you didn't have a Homepage Single sect
 craft/templates/index.html, it # would still be the one to get loaded when accessing http://yoursite.com/, # albeit without
 an ‘entry’ variable already set for you. # # See this page for more details on how Craft routes requests: # http://craftcms.com/docs/routing
 #}
-{% extends "/07_wrappers/_layout" %}
-{% block content %}
-    <h1>{{ entry.title }}</h1>
-    {{ entry.body }}
+{% extends "/wrappers/_layout" %}
+	{% block content %}
+	<h1>{{ entry.title }}</h1>
+	{{ entry.body }}
 {% endblock %}

@@ -1,52 +1,42 @@
 // screen.scss
-
 // ------------------
 // 00 - Introduction:
 // ------------------
-
 // This file should *ONLY* be used for the importing of SCSS files
-
 // All SCSS should be written in the BEM naming convention, popularised by Harry Roberts (https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
-
 // The naming convention follows this pattern:
 // 	- .block {}
 // 	- .block__element {}
 // 	- .block--modifier {}
 // 	- .block__element--modifier {}
-
 // ----------------------------
 // 01 - Wiping the slate clean:
 // ----------------------------
 @import "node_modules/normalize.css/normalize";
 @import "box-sizing";
-
 // ---------------------------------
 // 02 - Grabbing plugins and mixins:
 // ---------------------------------
-// sass-mq (https://github.com/sass-mq/sass-mq)
+// imports sass-mq (https://github.com/sass-mq/sass-mq)
 @import "node_modules/sass-mq/mq";
 @import "mq_setup";
-
-// susy (http://oddbird.net/susy/)
+// imports susy (http://oddbird.net/susy/)
 @import "node_modules/susy/sass/susy-prefix";
-
 @import "node_modules/susy/sass/plugins/svg-grid/prefix";
 @import "susy_setup";
-
 // ----------------------------------------------
 // 03 - Adding our own settings/variables/mixins:
 // ----------------------------------------------
-@import "01_src/templates/01_base/colors";
-@import "01_src/templates/01_base/dimensions";
-@import "01_src/templates/01_base/motion";
-@import "01_src/templates/01_base/typography";
-
+@import "01_src/scss/colors";
+@import "01_src/scss/dimensions";
+@import "01_src/scss/motion";
+@import "01_src/scss/typography";
 // ----------------------------------------------------------
 // 04 - Fetching our component styles, in some kind of order:
 // ----------------------------------------------------------
 @import "01_src/templates/07_wrappers/**/*.scss";
 @import "01_src/templates/06_macros/**/*.scss";
-@import "01_src/templates/05_pages/**/*.scss";
+@import "01_src/templates/05_layouts/**/*.scss";
 @import "01_src/templates/04_globals/**/*.scss";
 @import "01_src/templates/03_blocks/**/*.scss";
 @import "01_src/templates/02_elements/**/*.scss";

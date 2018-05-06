@@ -340,8 +340,8 @@ html {
   font-size: 137.5%;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
-  background: #aeb8c2;
-  color: #2f455b;
+  background: #dfe0e2;
+  color: #222e3a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizelegibility;
@@ -373,7 +373,7 @@ h3 {
 a:link,
 a:visited {
   text-decoration: none;
-  color: #2f455b;
+  color: #222e3a;
   transition: color 450ms cubic-bezier(0.25, 0.25, 0.75, 0.75) 0s, fill 450ms cubic-bezier(0.25, 0.25, 0.75, 0.75) 0s;
 }
 
@@ -421,7 +421,7 @@ li {
 
 blockquote {
   display: block;
-  border-left: 6px solid #2f455b;
+  border-left: 6px solid #222e3a;
   margin: 0;
   padding-left: 30px;
   line-height: 36px;
@@ -445,12 +445,12 @@ cite::before {
 
 ::-moz-selection {
   background-color: rgba(230, 26, 26, 0.75);
-  color: #aeb8c2;
+  color: #dfe0e2;
 }
 
 ::selection {
   background-color: rgba(230, 26, 26, 0.75);
-  color: #aeb8c2;
+  color: #dfe0e2;
 }
 
 hr {
