@@ -49,7 +49,7 @@
   },
   "globals": {
     "require": false,
-    "module": false,
+    "module": false
   },
   "env": {
     "browser": true,
