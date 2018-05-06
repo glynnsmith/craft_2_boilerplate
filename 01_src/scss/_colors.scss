@@ -3,8 +3,8 @@ $color__primary: hsl(0, 80%, 50%);
 $color__primary--light: lighten($color__primary, 16%);
 $color__primary--dark: darken($color__primary, 32%);
 
-$grey__mid: hsl(210, 14%, 76%);
-$grey__xlight: desaturate(lighten($grey__mid, 12%), 10%);
-$grey__light: desaturate(lighten($grey__mid, 5%), 5%);
-$grey__dark: saturate(darken($grey__mid, 58%), 12%);
-$grey__xdark: saturate(darken($grey__mid, 74%), 18%);
+$grey__mid: hsl(210, 14%, 50%);
+$grey__xlight: desaturate(lighten($grey__mid, 36%), 10%);
+$grey__light: desaturate(lighten($grey__mid, 28%), 5%);
+$grey__dark: saturate(darken($grey__mid, 32%), 12%);
+$grey__xdark: saturate(darken($grey__mid, 24%), 18%);

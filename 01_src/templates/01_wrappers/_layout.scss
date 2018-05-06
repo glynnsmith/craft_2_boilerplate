@@ -1,0 +1,14 @@
+.main {
+	display: block;
+	width: 100%;
+	max-width: 1200px;
+	padding: $air;
+	margin: 0 auto;
+}
+
+.grid__main {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: $air;
+	margin-top: $air;
+}
