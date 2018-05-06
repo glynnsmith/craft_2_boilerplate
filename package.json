@@ -14,7 +14,9 @@
     "url": "https://github.com/glynnsmith/craft_2_boilerplate/issues"
   },
   "homepage": "https://github.com/glynnsmith/craft_2_boilerplate",
-  "babel": {"presets": ["es2015"]},
+  "babel": {
+    "presets": ["es2015"]
+  },
   "devDependencies": {
     "ajv": "^5.5.2",
     "autoprefixer": "^6.3.6",
@@ -50,12 +52,15 @@
   },
   "scripts": {
     "//_clean": "Cleans destination directories for fresh deployment",
-    "clean": "echo \"\nCleaning build directories \n\" && rimraf craft && rimraf public",
+    "clean": "rimraf craft && rimraf public",
+    "preclean": "echo \"\n[ Cleaning build directories ]\n\"",
 
     "//_basefiles": "Copies craft basefiles to directories used for serving",
     "basefiles:craft": "cp -rf 01_src/craft_base/craft ./",
     "basefiles:public": "cp -rf 01_src/craft_base/public ./",
-    "basefiles:templates": "mkdir -p craft/templates/01_base craft/templates/02_elements craft/templates/03_blocks craft/templates/04_globals craft/templates/05_pages craft/templates/06_macros craft/templates/07_wrappers",
+    "basefiles:templates": "mkdir -p craft/templates/wrappers craft/templates/partials craft/templates/globals craft/templates/layout craft/templates/macros",
+    "basefiles": "run-p basefiles:craft basefiles:templates basefiles:public",
+    "prebasefiles": "echo \"\n[ Creating build directories and deploying Craft CMS basefiles ]\n\"",
 
     "//_images": "Image optimisation",
     "images:icons": "imagemin --plugin=svgo 01_src/images/icons/*.svg --out-dir=public/assets/images/icons",
@@ -63,35 +68,42 @@
     "images:jpg": "imagemin --plugin=mozjpeg 01_src/images/*.jpg --out-dir=public/assets/images/",
     "images:png": "imagemin --plugin=pngquant 01_src/images/*.png --out-dir=public/assets/images/",
     "images:gif": "imagemin --plugin=gifsicle 01_src/images/*.gif --out-dir=public/assets/images/",
+    "images": "run-p images:*",
+    "preimages": "echo \"\n[ Optimising images ]\n\"",
 
-    "//_serve": "Files served with browser-sync",
-    "serve": "browser-sync start --config 'browsersync-config.js'",
-
-    "//_scss": "Scss file processing",
-    "autoprefixer": "postcss -q -u autoprefixer -r public/assets/css/*.css",
+    "//_css": "Process SCSS files down to CSS",
     "scss": "node-sass --source-map=true --output-style=expanded --importer=node_modules/node-sass-glob-importer/dist/cli.js -o public/assets/css 01_src/scss",
+    "autoprefixer": "postcss -q -u autoprefixer -r public/assets/css/*.css",
     "lint-scss": "stylelint 01_src/scss/*.scss --syntax scss || true",
+    "css": "run-s scss autoprefixer",
+    "precss": "echo \"\n[ Building CSS files ]\n\"",
 
     "//_js": "Javascript file processing",
     "lint-js": "eslint 01_src/js || true",
     "uglify": "mkdir -p public/assets/js && uglifyjs 01_src/js/*.js -m -o public/assets/js/app.js && uglifyjs 01_src/js/*.js -m -c -o public/assets/js/app.min.js",
+    "js": "run-s lint-js uglify",
+    "prejs": "echo \"\n[ Building JS files ]\n\"",
 
     "//_build": "Building and copying files",
-    "build:basefiles": "run-p basefiles:*",
-    "build:css": "run-s scss autoprefixer",
-    "build:js": "run-s lint-js uglify",
-    "build:images": "run-p images:*",
+    "build:basefiles": "run-p basefiles",
+    "build:css": "run-s css",
+    "build:js": "run-s js",
+    "build:images": "run-p images",
     "build:favicons": "copyfiles -f 01_src/favicons/* ./public",
 
-    "build:twig_base": "copyfiles -f 01_src/templates/01_base/**/**/*.{twig,html} craft/templates/01_base",
-    "build:twig_elements": "copyfiles -f 01_src/templates/02_elements/**/**/*.{twig,html} craft/templates/02_elements",
-    "build:twig_blocks": "copyfiles -f 01_src/templates/03_blocks/**/**/*.{twig,html} craft/templates/03_blocks",
-    "build:twig_globals": "copyfiles -f 01_src/templates/04_globals/**/**/*.{twig,html} craft/templates/04_globals",
-    "build:twig_pages": "copyfiles -f 01_src/templates/05_pages/**/**/*.{twig,html} craft/templates/05_pages",
-    "build:twig_macros": "copyfiles -f 01_src/templates/06_macros/**/**/*.{twig,html} craft/templates/06_macros",
-    "build:twig_wrappers": "copyfiles -f 01_src/templates/07_wrappers/**/**/*.{twig,html} craft/templates/07_wrappers",
+    "build:twig_wrappers": "copyfiles -f 01_src/templates/01_wrappers/**/**/*.{twig,html} craft/templates/wrappers",
+    "build:twig_elements": "copyfiles -f 01_src/templates/02_elements/**/**/*.{twig,html} craft/templates/partials",
+    "build:twig_blocks": "copyfiles -f 01_src/templates/03_blocks/**/**/*.{twig,html} craft/templates/partials",
+    "build:twig_globals": "copyfiles -f 01_src/templates/04_globals/**/**/*.{twig,html} craft/templates/globals",
+    "build:twig_layouts": "copyfiles -f 01_src/templates/05_layouts/**/**/*.{twig,html} craft/templates/layout",
+    "build:twig_macros": "copyfiles -f 01_src/templates/06_macros/**/**/*.{twig,html} craft/templates/macros",
 
-    "build": "echo \"\nCreating build directories, then processing/copying files \n\" && run-s build:*",
+    "build": "run-s build:*",
+    "prebuild": "echo \"\n[ Processing/copying build files ]\n\"",
+
+    "//_serve": "Files served with browser-sync",
+    "serve": "browser-sync start --config 'browsersync-config.js'",
+    "preserve": "echo \"\n[ Starting Browser-Sync, serving files ]\n\"",
 
     "//_watch": "Watching for file changes",
     "watch:css": "onchange \"01_src/scss\" \"01_src/templates/01_base/**/**/*.scss\" \"01_src/templates/02_elements/**/**/*.scss\" \"01_src/templates/03_blocks/**/**/*.scss\" \"01_src/templates/04_globals/**/**/*.scss\" \"01_src/templates/05_pages/**/**/*.scss\" \"01_src/templates/06_macros/**/**/*.scss\" \"01_src/templates/07_wrappers/**/**/*.scss\" -- run-s build:css",
@@ -113,11 +125,12 @@
     "watch:twig_globals": "onchange \"01_src/templates/04_globals/**/**/*.{twig,html}\" -- run-s build:twig_globals",
     "watch:twig_pages": "onchange \"01_src/templates/05_pages/**/**/*.{twig,html}\" -- run-s build:twig_pages",
     "watch:twig_macros": "onchange \"01_src/templates/06_macros/**/**/*.{twig,html}\" -- run-s build:twig_macros",
-    "watch:twig_wrappers": "onchange \"01_src/templates/07_wrappers/**/**/*.{twig,html}\" -- run-s build:twig_wrappers",
-    "watch": "echo \"\nWatching files...\n\" && run-p -s serve watch:*",
+    "watch": "run-p -s serve watch:*",
+    "prewatch": "echo \"\n[ Watching for changes... ]\n\"",
 
-    "//_start": "Cleans, builds and watches ",
-    "start": "echo \"\nHello. Beginning tasks...\n\" && run-s --silent clean build watch",
+    "//_start": "Cleans, builds and watches",
+    "start": "run-s --silent clean build watch",
+    "prestart": "echo \"\n[ Hello. Beginning tasks... ]\n\"",
 
     "//_postinstall": "Auto-removes duplicate dependencies after npm install",
     "postinstall": "npm dedupe"
