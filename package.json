@@ -146,7 +146,7 @@
 			"onchange \"01_src/craft_base/public/**/*\" -- run-s basefiles:public",
 
 		"watch:twig_wrappers":
-			"onchange \"01_src/templates/01_wrappers/**/**/*.{twig,html}\" -- run-s build:twig_base",
+			"onchange \"01_src/templates/01_wrappers/**/**/*.{twig,html}\" -- run-s build:twig_wrappers",
 		"watch:twig_elements":
 			"onchange \"01_src/templates/02_elements/**/**/*.{twig,html}\" -- run-s build:twig_elements",
 		"watch:twig_blocks":
@@ -154,7 +154,7 @@
 		"watch:twig_globals":
 			"onchange \"01_src/templates/04_globals/**/**/*.{twig,html}\" -- run-s build:twig_globals",
 		"watch:twig_layouts":
-			"onchange \"01_src/templates/05_layouts/**/**/*.{twig,html}\" -- run-s build:twig_pages",
+			"onchange \"01_src/templates/05_layouts/**/**/*.{twig,html}\" -- run-s build:twig_layouts",
 		"watch:twig_macros":
 			"onchange \"01_src/templates/06_macros/**/**/*.{twig,html}\" -- run-s build:twig_macros",
 		"watch": "run-p -s serve watch:*",
