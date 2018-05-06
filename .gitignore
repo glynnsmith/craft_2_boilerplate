@@ -9,3 +9,4 @@ package-lock.json
 .sass-cache/*
 *.sublime-project
 *.sublime-workspace
+/.vscode
