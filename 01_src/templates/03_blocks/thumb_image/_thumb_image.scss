@@ -17,11 +17,17 @@
 	padding: $air;
 }
 
+.thumb-image__header {
+	h2 {
+		font-size: ms(1);
+	}
+}
+
 // .thumb-image__footer {
 // }
 
 .thumb-image__footer-link {
-	font-size: $fontsize__small;
+	font-size: ms(-1);
 	font-weight: 700;
 	width: 100%;
 	height: 80px;
