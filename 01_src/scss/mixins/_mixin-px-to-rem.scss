@@ -1,0 +1,23 @@
+// Credit to Stubbornella (http://www.stubbornella.org/content/2013/07/01/easy-peasy-rem-conversion-with-sass/) - https://github.com/stubbornella/oocss/blob/master/oocss/src/components/utils/_fontSize.scss
+
+/**
+ * Convert font-size from px to rem with px fallback
+ *
+ * @param $size - the value in pixel you want to convert
+ *
+ * e.g. p {@include fontSize(12px);}
+ *
+ */
+
+// Function for converting a px based font-size to rem.
+@function px-rem($size) {
+	$remSize: $size / 16px;
+	//Default font size on html element is 100%, equivalent to 16px;
+	@return #{$remSize}rem;
+}
+
+// Mixin that will include the fall back px declaration as well as the calculated rem value.
+@mixin fontSize($size) {
+	font-size: $size;
+	font-size: px-rem($size);
+}
