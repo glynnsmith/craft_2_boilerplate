@@ -10,5 +10,5 @@
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-gap: $air;
-	margin-top: $air;
+	margin-top: $air * 2;
 }
