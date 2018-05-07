@@ -466,16 +466,6 @@ strong {
   font-weight: 700;
 }
 
-ul {
-  line-height: 28px;
-  margin: 0;
-  margin-top: 28px;
-}
-
-li {
-  margin-bottom: 14px;
-}
-
 blockquote {
   display: block;
   border-left: 6px solid #222e3a;
