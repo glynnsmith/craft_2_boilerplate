@@ -1,11 +1,9 @@
 // dimensions.scss
 
-$air: 30px;
-$line-thickness: 1px;
-$border-radius: 3px;
+$air: 30px; // Used for controlling consistency of margins, padding, spacing
+$line-width: 1px; // Used for consistent border/line/hr thickness
+$border-radius: 3px; // Used for consistent corner rounding
 
-$button-size: $air * 1.6;
-
-$width__full: 100%;
-$width__max: 1824px;
-$width__content: 1200px;
+$width__max: 1800px; // Width for "pop-out" or wider-than-content sections
+$width__content: 1200px; // Maximum width the content expands out to
+$width__min: 320px; // Minimum width value mostly used for fluid type min range
