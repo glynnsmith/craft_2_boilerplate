@@ -1,7 +1,12 @@
 // type.scss
 
-$typeface__primary: Arial, Helvetica, sans-serif; // For body copy
-$typeface__secondary: Verdana, sans-serif; // For headers + display text
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Source+Sans+Pro:400,400i,700");
+
+$typeface-body: "Source Sans Pro";
+$typeface-header: "Open Sans Condensed";
+
+$typeface__primary: $typeface-body, Arial, Helvetica, sans-serif; // For body copy
+$typeface__secondary: $typeface-header, Verdana, sans-serif; // For headers + display text
 
 $fontsize__base: 137.5%; // 22px
 $baseline: 28px;

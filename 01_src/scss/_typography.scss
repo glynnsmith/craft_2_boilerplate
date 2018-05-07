@@ -6,7 +6,7 @@ html {
 		line-height,
 		$width__min,
 		$width__content,
-		$baseline / 1.4,
+		$baseline / 1.35,
 		$baseline
 	);
 	font-family: $typeface__primary;
@@ -62,15 +62,22 @@ a:link,
 a:visited {
 	text-decoration: none;
 	color: $color__primary;
-	transition: color $time__slow $ease__linear, fill $time__slow $ease--linear;
+	transition: color $time__med $ease__linear,
+		box-shadow $time__med $ease__linear, fill $time__med $ease--linear,
+		background-color $time__med $ease--linear;
 }
 
 a:hover {
 	color: $color__primary--light;
-	transition: color $time__slow $ease__linear, fill $time__slow $ease--linear;
+	// box-shadow: 0 3px $color__primary--light;
+	transition: color $time__med $ease__linear,
+		box-shadow $time__med $ease__linear, fill $time__med $ease--linear,
+		background-color $time__med $ease--linear;
 }
 
 a:active {
+	color: $color__primary--dark;
+	// box-shadow: 0 3px $color__primary--dark;
 	transition: none;
 }
 
