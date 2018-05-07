@@ -5,6 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Source+Sans+Pro:400,400i,700");
 html {
   line-height: 1.15;
   /* 1 */
@@ -357,7 +358,7 @@ h1,h2,h3,h4,h5 {
 }
  ================================== */
 html {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-weight: 400;
   background: #dadbdd;
   color: #222e3a;
@@ -383,12 +384,12 @@ html {
 }
 
 html {
-  line-height: 20px;
+  line-height: 20.74074px;
 }
 
 @media screen and (min-width: 320px) {
   html {
-    line-height: calc(0.90909vw + 17.09091px);
+    line-height: calc(0.82492vw + 18.10101px);
   }
 }
 
@@ -409,7 +410,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: Verdana, sans-serif;
+  font-family: "Open Sans Condensed", Verdana, sans-serif;
   font-weight: 700;
   padding: 0;
   margin: 0;
@@ -438,15 +439,16 @@ a:link,
 a:visited {
   text-decoration: none;
   color: #e61a1a;
-  transition: color 450ms cubic-bezier(0.25, 0.25, 0.75, 0.75), fill 450ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
+  transition: color 220ms cubic-bezier(0.25, 0.25, 0.75, 0.75), box-shadow 220ms cubic-bezier(0.25, 0.25, 0.75, 0.75), fill 220ms cubic-bezier(0.25, 0.25, 0.75, 0.75), background-color 220ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
 }
 
 a:hover {
-  color: #ee6363;
-  transition: color 450ms cubic-bezier(0.25, 0.25, 0.75, 0.75), fill 450ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
+  color: #f07a7a;
+  transition: color 220ms cubic-bezier(0.25, 0.25, 0.75, 0.75), box-shadow 220ms cubic-bezier(0.25, 0.25, 0.75, 0.75), fill 220ms cubic-bezier(0.25, 0.25, 0.75, 0.75), background-color 220ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
 }
 
 a:active {
+  color: #ae1313;
   transition: none;
 }
 
@@ -544,10 +546,36 @@ hr {
 
 .navigation__items {
   padding-left: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
+  list-style-type: none;
 }
 
 .navigation__item {
-  list-style-type: none;
+  margin-left: 30px;
+}
+
+.navigation__item:first-child {
+  margin-left: 0;
+}
+
+.navigation__link:link.active, .navigation__link:visited.active {
+  color: #e61a1a;
+  box-shadow: 0 3px #e61a1a;
+}
+
+.navigation__link:hover.active {
+  color: #f07a7a;
+  box-shadow: 0 3px #f07a7a;
+}
+
+.navigation__link:active.active {
+  color: #ae1313;
+  box-shadow: 0 3px #ae1313;
 }
 
 .b-pagination {
@@ -612,11 +640,11 @@ hr {
 }
 
 .button:hover {
-  background-color: #ee6363;
+  background-color: #f07a7a;
 }
 
 .button:active {
-  background-color: #530909;
+  background-color: #ae1313;
 }
 
 .button:focus {
@@ -636,7 +664,7 @@ hr {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
+  grid-gap: 60px;
   margin-top: 60px;
 }
 /*# sourceMappingURL=screen.css.map */

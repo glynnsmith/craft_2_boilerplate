@@ -9,6 +9,6 @@
 .grid__main {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-gap: $air;
+	grid-gap: $air * 2;
 	margin-top: $air * 2;
 }
