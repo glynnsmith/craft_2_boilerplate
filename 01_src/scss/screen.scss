@@ -1,4 +1,5 @@
 // screen.scss
+
 // ------------------
 // 00 - Introduction:
 // ------------------
@@ -9,28 +10,38 @@
 // 	- .block__element {}
 // 	- .block--modifier {}
 // 	- .block__element--modifier {}
+
 // ----------------------------
 // 01 - Wiping the slate clean:
 // ----------------------------
 @import "node_modules/normalize.css/normalize";
-@import "box-sizing";
+@import "setup/box-sizing";
+
 // ---------------------------------
 // 02 - Grabbing plugins and mixins:
 // ---------------------------------
 // imports sass-mq (https://github.com/sass-mq/sass-mq)
 @import "node_modules/sass-mq/mq";
-@import "mq_setup";
+@import "setup/mq-setup";
+
 // imports susy (http://oddbird.net/susy/)
 @import "node_modules/susy/sass/susy-prefix";
 @import "node_modules/susy/sass/plugins/svg-grid/prefix";
-@import "susy_setup";
+@import "setup/susy-setup";
+
+@import "mixins/mixin-fluid-type";
+@import "mixins/mixin-px-to-rem";
+
+@import "node_modules/modularscale-sass/stylesheets/modularscale";
+
 // ----------------------------------------------
 // 03 - Adding our own settings/variables/mixins:
 // ----------------------------------------------
-@import "01_src/scss/colors";
-@import "01_src/scss/dimensions";
-@import "01_src/scss/motion";
-@import "01_src/scss/typography";
+@import "01_src/scss/global_variables/colors";
+@import "01_src/scss/global_variables/dimensions";
+@import "01_src/scss/global_variables/motion";
+@import "01_src/scss/global_variables/typography";
+
 // ----------------------------------------------------------
 // 04 - Fetching our component styles, in some kind of order:
 // ----------------------------------------------------------

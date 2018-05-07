@@ -42,12 +42,28 @@ h2,
 h3,
 h4 {
 	font-family: $typeface__secondary;
-	font-weight: 400;
+	font-weight: 700;
 	padding: 0;
 	margin: 0;
 	font-size: $fontsize__med;
 	margin-bottom: $baseline / 1.5 + 4;
 	text-transform: capitalize;
+}
+
+h1 {
+	font-size: $fontsize__xlarge;
+}
+
+h2 {
+	font-size: $fontsize__large;
+}
+
+h3 {
+	font-size: $fontsize__med;
+}
+
+h4 {
+	font-size: $fontsize__reg;
 }
 
 // Base styling for links
