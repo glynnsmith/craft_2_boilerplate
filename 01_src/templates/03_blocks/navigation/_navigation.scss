@@ -3,8 +3,34 @@
 
 .navigation__items {
 	padding-left: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	list-style-type: none;
 }
 
 .navigation__item {
-	list-style-type: none;
+	margin-left: $air;
+
+	&:first-child {
+		margin-left: 0;
+	}
+}
+
+.navigation__link {
+	&:link.active,
+	&:visited.active {
+		color: $color__primary;
+		box-shadow: 0 3px $color__primary;
+	}
+
+	&:hover.active {
+		color: $color__primary--light;
+		box-shadow: 0 3px $color__primary--light;
+	}
+
+	&:active.active {
+		color: $color__primary--dark;
+		box-shadow: 0 3px $color__primary--dark;
+	}
 }
