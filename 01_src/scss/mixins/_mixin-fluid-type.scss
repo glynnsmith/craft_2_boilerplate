@@ -2,6 +2,20 @@
 
 // Credit to Mike Riethmuller (https://www.madebymike.com.au/) - https://codepen.io/MadeByMike/pen/vNrvdZ
 
+/* ==================================
+Usage:
+
+Single property
+html {
+	@include fluid(font-size, 320px, 1366px, 14px, 20px);
+}
+
+ Multiple properties with same values
+h1,h2,h3,h4,h5 {
+	@include fluid((padding-top, padding-bottom), 20rem, 70rem, 0rem, .5rem);
+}
+ ================================== */
+
 @mixin fluid($properties, $min-screen, $max-screen, $min-value, $max-value) {
 	& {
 		@each $property in $properties {
@@ -40,19 +54,3 @@
 	}
 	@return calc(#{$a * 100}vw #{$sign} #{$b});
 }
-
-/* ==================================
-
-Usage:
-
-Single property
-html {
-	@include fluid(font-size, 320px, 1366px, 14px, 20px);
-}
-
- Multiple properties with same values
-h1,h2,h3,h4,h5 {
-	@include fluid((padding-top, padding-bottom), 20rem, 70rem, 0rem, .5rem);
-}
-
- ================================== */

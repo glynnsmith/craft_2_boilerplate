@@ -1,23 +1,14 @@
 // typography.scss
 
-$typeface__primary: Arial, Helvetica, sans-serif; // For body copy
-$typeface__secondary: Verdana, sans-serif; // For headers + display text
-
-// Better way of arriving at fontsize__base?
-$fontsize__base: 137.5%; // 22px
-$baseline: 28px;
-
-// Needs redoing with some kind of modular scale implementation
-$fontsize__xsmall: 0.55rem;
-$fontsize__xsmall--mobile: 0.5rem;
-$fontsize__small: 0.85rem;
-$fontsize__reg: 1rem;
-$fontsize__med: 1.2rem;
-$fontsize__large: 1.6rem;
-$fontsize__xlarge: 2.2rem;
-
 html {
-	font-size: $fontsize__base;
+	@include fluid(font-size, $width__min, $width__content, ms(-1), ms(0));
+	@include fluid(
+		line-height,
+		$width__min,
+		$width__content,
+		$baseline / 1.4,
+		$baseline
+	);
 	font-family: $typeface__primary;
 	font-weight: 400;
 	background: $grey__xlight;
@@ -36,7 +27,6 @@ body {
 
 // Headers
 // =======
-
 h1,
 h2,
 h3,
@@ -45,30 +35,29 @@ h4 {
 	font-weight: 700;
 	padding: 0;
 	margin: 0;
-	font-size: $fontsize__med;
+	font-size: ms(2);
 	margin-bottom: $baseline / 1.5 + 4;
 	text-transform: capitalize;
 }
 
 h1 {
-	font-size: $fontsize__xlarge;
+	font-size: ms(4);
 }
 
 h2 {
-	font-size: $fontsize__large;
+	font-size: ms(3);
 }
 
 h3 {
-	font-size: $fontsize__med;
+	font-size: ms(2);
 }
 
 h4 {
-	font-size: $fontsize__reg;
+	font-size: ms(1);
 }
 
 // Base styling for links
 // ======================
-
 a:link,
 a:visited {
 	text-decoration: none;
@@ -87,31 +76,18 @@ a:active {
 
 // Paragraphs and spans
 // ====================
-
 p {
 	width: 100%;
-	max-width: $width__full;
 	margin-top: 0;
 	margin-bottom: 0;
-	line-height: $baseline;
 }
 
 p + p {
 	margin-top: $baseline;
 }
 
-.section__content {
-	h2 {
-		// Top level header used within section__content
-		font-size: $fontsize__med - 0.65;
-		font-weight: 600;
-		margin-top: $baseline;
-		margin-bottom: $baseline - 18;
-	}
-}
-
 strong {
-	font-weight: 600;
+	font-weight: 700;
 }
 
 ul {
@@ -132,7 +108,7 @@ blockquote {
 	line-height: $baseline;
 	font-style: italic;
 	font-weight: 600;
-	margin-bottom: $baseline * 1 - 3;
+	margin-bottom: $baseline;
 }
 
 cite {
@@ -140,7 +116,7 @@ cite {
 	margin: 0;
 	margin-top: 3px;
 	line-height: $baseline;
-	font-size: $fontsize__small;
+	font-size: ms(-1);
 	font-style: normal;
 
 	&::before {
@@ -154,5 +130,5 @@ cite {
 }
 
 hr {
-	height: 1px;
+	height: $line-width;
 }

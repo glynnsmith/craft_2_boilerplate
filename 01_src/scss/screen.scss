@@ -17,33 +17,31 @@
 @import "node_modules/normalize.css/normalize";
 @import "setup/box-sizing";
 
+// ----------------------------------------------
+// 02 - Adding our own settings/variables:
+// ----------------------------------------------
+@import "01_src/scss/global_variables/colors";
+@import "01_src/scss/global_variables/dimensions";
+@import "01_src/scss/global_variables/motion";
+@import "node_modules/modularscale-sass/stylesheets/modularscale";
+@import "01_src/scss/global_variables/type";
+
 // ---------------------------------
-// 02 - Grabbing plugins and mixins:
+// 03 - Grabbing plugins from node_modules:
 // ---------------------------------
 // imports sass-mq (https://github.com/sass-mq/sass-mq)
 @import "node_modules/sass-mq/mq";
 @import "setup/mq-setup";
 
-// imports susy (http://oddbird.net/susy/)
-@import "node_modules/susy/sass/susy-prefix";
-@import "node_modules/susy/sass/plugins/svg-grid/prefix";
-@import "setup/susy-setup";
-
-@import "mixins/mixin-fluid-type";
+// ---------------------------------
+// 04 - Setting up our type systems:
+// ---------------------------------
 @import "mixins/mixin-px-to-rem";
-
-@import "node_modules/modularscale-sass/stylesheets/modularscale";
-
-// ----------------------------------------------
-// 03 - Adding our own settings/variables/mixins:
-// ----------------------------------------------
-@import "01_src/scss/global_variables/colors";
-@import "01_src/scss/global_variables/dimensions";
-@import "01_src/scss/global_variables/motion";
-@import "01_src/scss/global_variables/typography";
+@import "mixins/mixin-fluid-type";
+@import "01_src/scss/typography";
 
 // ----------------------------------------------------------
-// 04 - Fetching our component styles, in some kind of order:
+// 05 - Fetching our component styles, in some kind of order:
 // ----------------------------------------------------------
 @import "01_src/templates/06_macros/**/*.scss";
 @import "01_src/templates/05_layouts/**/*.scss";

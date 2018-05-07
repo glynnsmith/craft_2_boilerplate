@@ -1,0 +1,21 @@
+// type.scss
+
+$typeface__primary: Arial, Helvetica, sans-serif; // For body copy
+$typeface__secondary: Verdana, sans-serif; // For headers + display text
+
+$fontsize__base: 137.5%; // 22px
+$baseline: 28px;
+
+$modularscale: (
+	base: 22px,
+	ratio: 1.2
+);
+
+// Needs redoing with some kind of modular scale implementation
+// $fontsize__xsmall: 0.55rem;
+// $fontsize__xsmall--mobile: 0.5rem;
+// $fontsize__small: 18px;
+// $fontsize__reg: 22px;
+// $fontsize__med: 1.2rem;
+// $fontsize__large: 1.6rem;
+// $fontsize__xlarge: 2.2rem;
