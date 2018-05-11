@@ -1,7 +1,7 @@
 .main {
 	display: block;
 	width: 100%;
-	max-width: 1200px;
+	max-width: $width__content;
 	padding: $air;
 	margin: 0 auto;
 }
