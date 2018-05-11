@@ -56,7 +56,8 @@
 	"scripts": {
 		"//_clean": "Cleans destination directories for fresh deployment",
 		"clean": "rimraf craft && rimraf public",
-		"preclean": "echo \"\n[ Cleaning build directories ]\n\"",
+		"preclean":
+			"echo \"\n\\x1b[104m\\x1b[97m Cleaning build directories \\x1b[0m\n\"",
 
 		"//_basefiles":
 			"Copies craft basefiles to directories used for serving",
@@ -67,7 +68,7 @@
 		"basefiles":
 			"run-p basefiles:craft basefiles:templates basefiles:public",
 		"prebasefiles":
-			"echo \"\n[ Creating build directories and deploying Craft CMS basefiles ]\n\"",
+			"echo \"\n\\x1b[104m\\x1b[97m Creating build directories and deploying Craft CMS basefiles \\x1b[0m\n\"",
 
 		"//_images": "Image optimisation",
 		"images:icons":
@@ -81,7 +82,8 @@
 		"images:gif":
 			"imagemin --plugin=gifsicle 01_src/images/*.gif --out-dir=public/assets/images/",
 		"images": "run-p images:*",
-		"preimages": "echo \"\n[ Optimising images ]\n\"",
+		"preimages":
+			"echo \"\n\\x1b[104m\\x1b[97m Optimising images \\x1b[0m\n\"",
 
 		"//_css": "Process SCSS files down to CSS",
 		"scss":
@@ -89,14 +91,15 @@
 		"autoprefixer": "postcss -q -u autoprefixer -r public/assets/css/*.css",
 		"lint-scss": "stylelint 01_src/scss/*.scss --syntax scss || true",
 		"css": "run-s scss autoprefixer",
-		"precss": "echo \"\n[ Building CSS files ]\n\"",
+		"precss":
+			"echo \"\n\\x1b[104m\\x1b[97m Building CSS files \\x1b[0m\n\"",
 
 		"//_js": "Javascript file processing",
 		"lint-js": "eslint 01_src/js || true",
 		"uglify":
 			"mkdir -p public/assets/js && uglifyjs 01_src/js/*.js -m -o public/assets/js/app.js && uglifyjs 01_src/js/*.js -m -c -o public/assets/js/app.min.js",
 		"js": "run-s lint-js uglify",
-		"prejs": "echo \"\n[ Building JS files ]\n\"",
+		"prejs": "echo \"\n\\x1b[104m\\x1b[97m Building JS files \\x1b[0m\n\"",
 
 		"//_build": "Building and copying files",
 		"build:basefiles": "run-p basefiles",
@@ -117,11 +120,13 @@
 		"build:twig_macros":
 			"copyfiles -f 01_src/templates/06_macros/**/**/*.{twig,html} craft/templates/macros",
 		"build": "run-s build:*",
-		"prebuild": "echo \"\n[ Processing/copying build files ]\n\"",
+		"prebuild":
+			"echo \"\n\\x1b[104m\\x1b[97m Processing/copying build files \\x1b[0m\n\"",
 
 		"//_serve": "Files served with browser-sync",
 		"serve": "browser-sync start --config 'browsersync-config.js'",
-		"preserve": "echo \"\n[ Starting Browser-Sync, serving files ]\n\"",
+		"preserve":
+			"echo \"\n\\x1b[104m\\x1b[97m Starting Browser-Sync, serving files \\x1b[0m\n\"",
 
 		"//_watch": "Watching for file changes",
 		"watch:css":
@@ -154,11 +159,13 @@
 		"watch:twig_macros":
 			"onchange \"01_src/templates/06_macros/**/**/*.{twig,html}\" -- run-s build:twig_macros",
 		"watch": "run-p -s serve watch:*",
-		"prewatch": "echo \"\n[ Watching for changes... ]\n\"",
+		"prewatch":
+			"echo \"\n\\x1b[104m\\x1b[97m Watching for changes... \\x1b[0m\n\"",
 
 		"//_start": "Cleans, builds and watches",
 		"start": "run-s --silent clean build watch",
-		"prestart": "echo \"\n[ Hello. Beginning tasks... ]\n\"",
+		"prestart":
+			"echo \"\n\\x1b[104m\\x1b[97m Hello. Beginning tasks... \\x1b[0m\n\"",
 
 		"//_postinstall":
 			"Auto-removes duplicate dependencies after npm install",
