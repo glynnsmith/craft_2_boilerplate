@@ -1,8 +1,8 @@
 $mq-responsive: true;
 
 $mq-breakpoints: (
-	mobile: 320px,
-	tablet: 580px,
+	mobile: 540px,
+	tablet: 680px,
 	tablet--l: 800px,
 	desktop: 1024px,
 	wide: 1200px
@@ -16,7 +16,10 @@ $mq-show-breakpoints: (
 	wide
 );
 
-@mixin mq-show-breakpoints($show-breakpoints: $mq-show-breakpoints, $breakpoints: $mq-breakpoints) {
+@mixin mq-show-breakpoints(
+	$show-breakpoints: $mq-show-breakpoints,
+	$breakpoints: $mq-breakpoints
+) {
 	body::before {
 		background-color: #555555;
 		color: #eeeeee;
@@ -36,7 +39,7 @@ $mq-show-breakpoints: (
 		@each $show-breakpoint in $show-breakpoints {
 			$width: mq-get-breakpoint-width($show-breakpoint, $breakpoints);
 			@include mq($show-breakpoint, $breakpoints: $breakpoints) {
-				content: '#{$show-breakpoint} (> #{$width})';
+				content: "#{$show-breakpoint} (> #{$width})";
 			}
 		}
 	}
