@@ -1,0 +1,9 @@
+{% set logo = globals.logo.first() %}
+
+<a href="{{ siteUrl }}" class="logo">
+	{% if logo|length %}
+		<img src="{{ logo.url() }}" alt="Website logo" class="logo__image">
+	{% else %}
+		<span class="logo__text">{{ siteName }}</span>
+	{% endif %}
+</a>

@@ -1,10 +1,19 @@
 .masthead {
+	width: 100%;
+	background-color: white;
+
+	& + * {
+		margin-top: $baseline * 2;
+	}
+}
+
+.masthead__content {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 	max-width: $width__content;
-	padding: $air;
 	margin: 0 auto;
+	padding: $air $air;
 }

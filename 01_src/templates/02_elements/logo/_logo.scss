@@ -1,0 +1,13 @@
+.logo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.logo__image {
+	@include fluid(width, $width__min, $width__content, 60px, 100px);
+}
+
+.logo__text {
+	margin-left: $air;
+}
