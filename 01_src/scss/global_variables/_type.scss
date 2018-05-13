@@ -1,26 +1,17 @@
 // type.scss
 
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Roboto+Condensed");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:400,400i,700");
 
-$typeface-body: "Open Sans";
+$typeface-body: "Roboto";
 $typeface-header: "Roboto Condensed";
 
 $typeface__primary: $typeface-body, Arial, Helvetica, sans-serif; // For body copy
 $typeface__secondary: $typeface-header, Verdana, sans-serif; // For headers + display text
 
 $fontsize__base: 137.5%; // 22px
-$baseline: 28px;
+$baseline: 32px;
 
 $modularscale: (
-	base: 22px,
+	base: 20px,
 	ratio: 1.2
 );
-
-// Needs redoing with some kind of modular scale implementation
-// $fontsize__xsmall: 0.55rem;
-// $fontsize__xsmall--mobile: 0.5rem;
-// $fontsize__small: 18px;
-// $fontsize__reg: 22px;
-// $fontsize__med: 1.2rem;
-// $fontsize__large: 1.6rem;
-// $fontsize__xlarge: 2.2rem;
