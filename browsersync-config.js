@@ -13,23 +13,24 @@
  */
 module.exports = {
 	ui: {
-		port: 3001,
+		port: 3001
 	},
 	files: [
 		"public/assets/css/*.css",
 		"public/assets/js/*.js",
+		"public/assets/uploads/**/*",
 		"craft/**/*.html",
 		"craft/**/*.twig",
 		"**/*.txt",
 		"**/*.pdf",
-		"!node_modules/**/*.html",
+		"!node_modules/**/*.html"
 	],
 	watchEvents: ["change"],
 	watch: true,
 	ignore: [],
 	single: false,
 	watchOptions: {
-		ignoreInitial: true,
+		ignoreInitial: true
 	},
 	server: false,
 	proxy: "craft.test",
@@ -43,8 +44,8 @@ module.exports = {
 		forms: {
 			submit: true,
 			inputs: true,
-			toggles: true,
-		},
+			toggles: true
+		}
 	},
 	logLevel: "info",
 	logPrefix: "Browsersync",
@@ -82,21 +83,21 @@ module.exports = {
 		"input:toggles",
 		"form:submit",
 		"form:reset",
-		"click",
+		"click"
 	],
 	socket: {
 		socketIoOptions: {
-			log: false,
+			log: false
 		},
 		socketIoClientConfig: {
-			reconnectionAttempts: 50,
+			reconnectionAttempts: 50
 		},
 		path: "/browser-sync/socket.io",
 		clientPath: "/browser-sync",
 		namespace: "/browser-sync",
 		clients: {
-			heartbeatTimeout: 5000,
-		},
+			heartbeatTimeout: 5000
+		}
 	},
 	tagNames: {
 		less: "link",
@@ -107,6 +108,6 @@ module.exports = {
 		png: "img",
 		svg: "img",
 		gif: "img",
-		js: "script",
-	},
+		js: "script"
+	}
 };

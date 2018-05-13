@@ -46,17 +46,17 @@
 		"onchange": "^2.4.0",
 		"postcss-cli": "^2.5.2",
 		"prettier": "^1.12.1",
-		"rimraf": "^2.5.4",
 		"sass-mq": "^4.0.2",
 		"sass-rem": "^2.0.1",
 		"stylelint": "^9.2.0",
 		"svgo": "^0.6.6",
+		"trash-cli": "^1.4.0",
 		"uglify-js": "^2.6.2"
 	},
 	"scripts": {
 		"//_clean": "Cleans destination directories for fresh deployment",
-		"clean:craft": "rimraf craft",
-		"clean:public": "rimraf public",
+		"clean:craft": "trash craft",
+		"clean:public": "trash 'public' '!public/assets/uploads'",
 		"clean": "npm run clean:craft && npm run clean:public",
 		"preclean":
 			"echo \"\n\\x1b[104m\\x1b[97m Cleaning build directories \\x1b[0m\n\"",
@@ -125,6 +125,9 @@
 		"prebuild":
 			"echo \"\n\\x1b[104m\\x1b[97m Processing/copying build files \\x1b[0m\n\"",
 
+		"uploads":
+			"copyfiles -f public/assets/uploads/**/* 01_src/craft_base/public/assets/uploads",
+
 		"//_serve": "Files served with browser-sync",
 		"serve:browsersync":
 			"browser-sync start --config 'browsersync-config.js'",
@@ -149,7 +152,7 @@
 		"watch:basefiles_craft":
 			"onchange \"01_src/craft_base/craft/**/*\" -- run-s basefiles:craft",
 		"watch:basefiles_public":
-			"onchange \"01_src/craft_base/public/**/*\" -- run-s basefiles:public",
+			"onchange \"01_src/craft_base/public/**/*\" \"!01_src/craft_base/public/assets/uploads/**/*\" -- run-s basefiles:public",
 		"watch:twig_wrappers":
 			"onchange \"01_src/templates/01_wrappers/**/**/*.{twig,html}\" -- run-s build:twig_wrappers",
 		"watch:twig_elements":
@@ -162,6 +165,8 @@
 			"onchange \"01_src/templates/05_layouts/**/**/*.{twig,html}\" -- run-s build:twig_layouts",
 		"watch:twig_macros":
 			"onchange \"01_src/templates/06_macros/**/**/*.{twig,html}\" -- run-s build:twig_macros",
+		"watch:uploads":
+			"onchange \"public/assets/uploads/**/*\" -- run-s uploads",
 		"watch": "run-p serve watch:*",
 		"prewatch":
 			"echo \"\n\\x1b[104m\\x1b[97m Watching for changes... \\x1b[0m\n\"",
