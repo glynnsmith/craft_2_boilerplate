@@ -1,4 +1,13 @@
 .footer {
+	background-color: white;
+	width: 100%;
+
+	& + * {
+		margin-top: $baseline * 2;
+	}
+}
+
+.footer__upper {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -7,4 +16,29 @@
 	max-width: $width__content;
 	padding: $air;
 	margin: 0 auto;
+
+	@include mq($until: tablet--l) {
+		flex-direction: column-reverse;
+		text-align: center;
+	}
+
+	// @include mq($until: mobile) {
+	// 	grid-template-columns: 1fr;
+	// }
+}
+
+.footer__lower {
+	width: 100%;
+	max-width: $width__content;
+	padding: 0 $air $air / 4;
+	margin: 0 auto;
+	@include fluid(font-size, $width__min, $width__content, ms(-3), ms(-2));
+	@include fluid(
+		line-height,
+		$width__min,
+		$width__content,
+		$baseline / 1.7,
+		$baseline / 1.7
+	);
+	text-align: center;
 }
