@@ -22,9 +22,9 @@
 		"ajv": "^5.5.2",
 		"autoprefixer": "^6.3.6",
 		"babel-cli": "^6.26.0",
-		"babel-eslint": "^8.2.2",
+		"babel-eslint": "^8.2.3",
 		"basicscroll": "^2.1.1",
-		"browser-sync": "^2.12.8",
+		"browser-sync": "^2.24.4",
 		"copyfiles": "^2.0.0",
 		"eslint": "^4.19.1",
 		"eslint-config-prettier": "^2.9.0",
@@ -45,7 +45,7 @@
 		"npm-run-all": "^2.1.1",
 		"onchange": "^2.4.0",
 		"postcss-cli": "^2.5.2",
-		"prettier": "^1.11.1",
+		"prettier": "^1.12.1",
 		"rimraf": "^2.5.4",
 		"sass-mq": "^4.0.2",
 		"sass-rem": "^2.0.1",
@@ -55,7 +55,9 @@
 	},
 	"scripts": {
 		"//_clean": "Cleans destination directories for fresh deployment",
-		"clean": "rimraf craft && rimraf public",
+		"clean:craft": "rimraf craft",
+		"clean:public": "rimraf public",
+		"clean": "npm run clean:craft && npm run clean:public",
 		"preclean":
 			"echo \"\n\\x1b[104m\\x1b[97m Cleaning build directories \\x1b[0m\n\"",
 
@@ -99,7 +101,7 @@
 		"uglify":
 			"mkdir -p public/assets/js && uglifyjs 01_src/js/*.js -m -o public/assets/js/app.js && uglifyjs 01_src/js/*.js -m -c -o public/assets/js/app.min.js",
 		"js": "run-s lint-js uglify",
-		"prejs": "echo \"\n\\x1b[104m\\x1b[97m Building JS files \\x1b[0m\n\"",
+		"prejs": "echo \"\n\\x1b[104m\\x1b[97m Building JS files \\x1b[0m\"",
 
 		"//_build": "Building and copying files",
 		"build:basefiles": "run-p basefiles",
@@ -124,7 +126,9 @@
 			"echo \"\n\\x1b[104m\\x1b[97m Processing/copying build files \\x1b[0m\n\"",
 
 		"//_serve": "Files served with browser-sync",
-		"serve": "browser-sync start --config 'browsersync-config.js'",
+		"serve:browsersync":
+			"browser-sync start --config 'browsersync-config.js'",
+		"serve": "run-s serve:*",
 		"preserve":
 			"echo \"\n\\x1b[104m\\x1b[97m Starting Browser-Sync, serving files \\x1b[0m\n\"",
 
@@ -158,12 +162,12 @@
 			"onchange \"01_src/templates/05_layouts/**/**/*.{twig,html}\" -- run-s build:twig_layouts",
 		"watch:twig_macros":
 			"onchange \"01_src/templates/06_macros/**/**/*.{twig,html}\" -- run-s build:twig_macros",
-		"watch": "run-p -s serve watch:*",
+		"watch": "run-p serve watch:*",
 		"prewatch":
 			"echo \"\n\\x1b[104m\\x1b[97m Watching for changes... \\x1b[0m\n\"",
 
 		"//_start": "Cleans, builds and watches",
-		"start": "run-s --silent clean build watch",
+		"start": "run-s clean build watch",
 		"prestart":
 			"echo \"\n\\x1b[104m\\x1b[97m Hello. Beginning tasks... \\x1b[0m\n\"",
 
