@@ -1,4 +1,11 @@
+
+
 <header id="header" class="masthead" role="banner">
-	<a href="{{ siteUrl }}">{{ siteName }}</a>
-	{% include '/partials/_navigation' %}
+	<div class="masthead__content">
+		{% include 'partials/logo' %}
+		{% include '/partials/_navigation' %}
+	</div>
 </header>
+
+
+{# {{ dump logo }} #}
