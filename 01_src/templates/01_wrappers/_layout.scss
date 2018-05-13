@@ -9,6 +9,14 @@
 .grid__main {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-gap: $air * 2;
-	margin-top: $air * 2;
+	grid-gap: $air;
+	margin-top: $air;
+
+	@include mq($until: tablet--l) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include mq($until: mobile) {
+		grid-template-columns: 1fr;
+	}
 }
