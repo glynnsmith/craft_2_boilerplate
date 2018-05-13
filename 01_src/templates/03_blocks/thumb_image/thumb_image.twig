@@ -1,7 +1,11 @@
 <div class="thumb-image">
-	<div class="thumb-image__image-container">
-		<img src="http://via.placeholder.com/800" class="thumb-image__image">
-	</div>
+	<picture class="thumb-image__image-container">
+		<source media="(max-width: 540px)" srcset="http://via.placeholder.com/540" class="thumb-image__image">
+		<source media="(max-width: 800px)" srcset="http://via.placeholder.com/800" class="thumb-image__image">
+		<source media="(max-width: 1024px)" srcset="http://via.placeholder.com/1024" class="thumb-image__image">
+		<img src="http://via.placeholder.com/1200" class="thumb-image__image">
+	</picture>
+
 	<div class="thumb-image__text">
 		<h2 class="thumb-image__header">Image example</h2>
 
