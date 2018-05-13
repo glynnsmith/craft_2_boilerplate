@@ -1,7 +1,7 @@
 .main {
 	display: block;
 	width: 100%;
-	max-width: $width__content;
+	max-width: $width__content + ($width__content / 4);
 	padding: $air;
 	margin: 0 auto;
 }
@@ -9,8 +9,8 @@
 .grid__main {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-gap: $air;
-	margin-top: $air;
+	grid-gap: $air * 2;
+	margin-top: $air * 2;
 
 	@include mq($until: tablet--l) {
 		grid-template-columns: repeat(2, 1fr);
