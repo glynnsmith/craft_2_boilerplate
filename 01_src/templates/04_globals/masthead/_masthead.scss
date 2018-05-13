@@ -3,7 +3,7 @@
 	background-color: white;
 
 	& + * {
-		margin-top: $baseline * 2;
+		margin-top: $baseline;
 	}
 }
 
