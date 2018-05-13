@@ -10,7 +10,7 @@ $color__secondary: #374140;
 $color__secondary--light: lighten($color__secondary, 21%);
 $color__secondary--dark: darken($color__secondary, 12%);
 
-$grey__mid: hsl(210, 14%, 50%);
+$grey__mid: hsl(210, 2%, 50%);
 $grey__xlight: desaturate(lighten($grey__mid, 42%), 10%);
 $grey__light: desaturate(lighten($grey__mid, 28%), 5%);
 $grey__dark: saturate(darken($grey__mid, 32%), 12%);
