@@ -1,6 +1,5 @@
 /node_modules/
 package-lock.json
-/01_src/craft_base
 /02_development/
 /03_production/
 .eslintcache
