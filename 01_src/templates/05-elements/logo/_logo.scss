@@ -1,0 +1,22 @@
+.logo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-family: $typeface__secondary;
+	fill: $grey__dark;
+
+	&:hover {
+		color: $color__primary;
+		fill: currentColor;
+	}
+}
+
+.logo__image {
+	@include fluid(width, $width__min, $width__content, 14px, 17px);
+	height: auto;
+}
+
+.logo__text {
+	margin-left: $air / 3;
+	transform: translateY(-2px);
+}

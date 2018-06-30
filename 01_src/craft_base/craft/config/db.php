@@ -13,7 +13,7 @@ return array(
 	'server' => '192.168.10.10',
 
 	// The name of the database to select.
-	'database' => 'craft',
+	'database' => 'iamglynnsmith_develop',
 
 	// The database username to connect with.
 	'user' => 'homestead',

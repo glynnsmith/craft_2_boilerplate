@@ -33,7 +33,7 @@ module.exports = {
 		ignoreInitial: true
 	},
 	server: false,
-	proxy: "craft.test",
+	proxy: "local.iamglynnsmith-craft",
 	port: 3000,
 	middleware: false,
 	serveStatic: [],

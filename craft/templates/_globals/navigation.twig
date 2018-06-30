@@ -1,0 +1,12 @@
+<nav class="nagivation">
+	<ul class="navigation__items">
+		<li class="navigation__item">
+			<a href="{{ siteUrl }}" class="navigation__link {% if craft.request.firstSegment=='' %} active{% endif %}">Home</a>
+			<span class="navigation__link-pip"></span>
+		</li>
+		<li class="navigation__item">
+			<a href="{{ url('news') }}" class="navigation__link {% if craft.request.firstSegment=='news' %} active{% endif %}">News</a>
+			<span class="navigation__link-pip"></span>
+		</li>
+	</ul>
+</nav>

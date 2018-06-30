@@ -11,7 +11,7 @@ html {
 	);
 	font-family: $typeface__primary;
 	font-weight: 400;
-	background: $grey__xlight;
+	background: $grey__light;
 	color: $grey__dark;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -79,7 +79,7 @@ h2,
 h3,
 h4 {
 	font-family: $typeface__secondary;
-	font-weight: 400;
+	font-weight: 500;
 	padding: 0;
 	margin: 0;
 	font-size: ms(2);
@@ -88,7 +88,7 @@ h4 {
 }
 
 h1 {
-	@include fluid(font-size, $width__min, $width__content, ms(2), ms(4));
+	@include fluid(font-size, $width__min, $width__content, ms(2), ms(6));
 
 	& + * {
 		@include fluid(
@@ -153,7 +153,7 @@ cite {
 
 ::selection {
 	background-color: rgba($color__primary, 0.75);
-	color: $grey__xlight;
+	color: $grey__light;
 }
 
 hr {

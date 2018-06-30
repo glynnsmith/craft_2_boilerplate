@@ -1,0 +1,31 @@
+.masthead {
+	width: 100%;
+	@include fluid(font-size, $width__min, $width__content, ms(-1), ms(0));
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+
+	& + * {
+		// margin-top: $baseline;
+	}
+
+	a:link,
+	a:visited {
+		color: $grey__dark;
+	}
+
+	a:hover {
+		color: $color__primary;
+	}
+}
+
+.masthead__content {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	max-width: $width__content;
+	margin: 0 auto;
+	padding: $air;
+}

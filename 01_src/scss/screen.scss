@@ -43,9 +43,9 @@
 // ----------------------------------------------------------
 // 05 - Fetching our component styles, in some kind of order:
 // ----------------------------------------------------------
-@import "01_src/templates/06_macros/**/*.scss";
-@import "01_src/templates/05_layouts/**/*.scss";
-@import "01_src/templates/04_globals/**/*.scss";
-@import "01_src/templates/03_blocks/**/*.scss";
-@import "01_src/templates/02_elements/**/*.scss";
-@import "01_src/templates/01_wrappers/**/*.scss";
+@import "01_src/templates/06-macros/**/**/*.scss";
+@import "01_src/templates/05-elements/**/**/*.scss";
+@import "01_src/templates/04-blocks/**/**/*.scss";
+@import "01_src/templates/03-globals/**/**/*.scss";
+@import "01_src/templates/02-layouts/**/**/*.scss";
+@import "01_src/templates/01-wrappers/**/**/*.scss";

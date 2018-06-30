@@ -2,7 +2,7 @@
 
 // https://color.adobe.com/Sea-Wolf-color-theme-782171/
 
-$color__primary: #dc3522;
+$color__primary: #ff1f57;
 $color__primary--light: lighten($color__primary, 21%);
 $color__primary--dark: darken($color__primary, 12%);
 
@@ -11,7 +11,5 @@ $color__secondary--light: lighten($color__secondary, 21%);
 $color__secondary--dark: darken($color__secondary, 12%);
 
 $grey__mid: hsl(210, 2%, 50%);
-$grey__xlight: desaturate(lighten($grey__mid, 42%), 10%);
-$grey__light: desaturate(lighten($grey__mid, 28%), 5%);
-$grey__dark: saturate(darken($grey__mid, 32%), 12%);
-$grey__xdark: saturate(darken($grey__mid, 24%), 18%);
+$grey__light: #aeb8c2; // Light page background-color
+$grey__dark: #2f455b; // Text color
